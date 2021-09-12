@@ -1,0 +1,54 @@
+.container {
+  background-color: red;
+  padding: 50px;
+  border-radius: 10%;
+  display: block;
+  width: 375px;
+  margin-top: 1rem;
+  margin-left: 30rem;
+}
+
+.space {
+  margin-top: 20px;
+}
+
+#btn {
+  background-color: rgb(0, 183, 255);
+  border-radius: 10%;
+  width: 50px;
+  height: 30px;
+}
+
+.navbar {
+  background-color: rgba(0, 0, 255, 0.801);
+  height: 4rem;
+}
+.h1 {
+  font-size: 30px;
+  font-weight: bolder;
+  padding: 20px;
+  display: inline;
+
+}
+.left {
+  margin-left: 15rem;
+  font-size: 40px;
+}
+.size {
+  height: 45px;
+  width: 40px;
+  border-radius: 45%;
+  margin-top: 10px;
+}
+
+table {
+  border-collapse: separate;
+  border-spacing: 100px 0;
+  margin-left: 5rem;
+  padding-bottom: 50px;
+}
+
+td {
+  padding: 10px 0;
+}
+
