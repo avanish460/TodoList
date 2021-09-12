@@ -83,79 +83,79 @@ function clearStorage() {
   }
 }
 
-var alarmSound = new Audio();
-		alarmSound.src = 'alarm.mp3';
-		var alarmTimer;
+// var alarmSound = new Audio();
+// 		alarmSound.src = 'alarm.mp3';
+// 		var alarmTimer;
 
-		function setAlarm(button) {
-      document.getElementById('alarmicon').src = "alarm_on_black_24dp.svg";
-			var ms = document.getElementById('alarmTime').valueAsNumber;
+// 		function setAlarm(button) {
+//       document.getElementById('alarmicon').src = "alarm_on_black_24dp.svg";
+// 			var ms = document.getElementById('alarmTime').valueAsNumber;
 
-      if (localStorage.getItem("itemsJson2") == null) {
-        itemJsonArray_2 = [];
-        itemJsonArray_2.push(ms);
-        localStorage.setItem("itemsJson2", JSON.stringify(itemJsonArray_2));
-      } else {
-        itemJsonArrayStr_2 = localStorage.getItem("itemsJson2");
-        itemJsonArray_2 = JSON.parse(itemJsonArrayStr_2);
-        itemJsonArray_2.push(ms);
-        localStorage.setItem("itemsJson2", JSON.stringify(itemJsonArray_2));
-      }
+//       if (localStorage.getItem("itemsJson2") == null) {
+//         itemJsonArray_2 = [];
+//         itemJsonArray_2.push(ms);
+//         localStorage.setItem("itemsJson2", JSON.stringify(itemJsonArray_2));
+//       } else {
+//         itemJsonArrayStr_2 = localStorage.getItem("itemsJson2");
+//         itemJsonArray_2 = JSON.parse(itemJsonArrayStr_2);
+//         itemJsonArray_2.push(ms);
+//         localStorage.setItem("itemsJson2", JSON.stringify(itemJsonArray_2));
+//       }
         
-			if(isNaN(itemJsonArray_2[0])) {
-				alert('Invalid Date');
-				return;
-			}
+// 			if(isNaN(itemJsonArray_2[0])) {
+// 				alert('Invalid Date');
+// 				return;
+// 			}
     
-			var alarm = new Date(itemJsonArray_2[0]);
-			var alarmTime = new Date(alarm.getUTCFullYear(), alarm.getUTCMonth(), alarm.getUTCDate(),  alarm.getUTCHours(), alarm.getUTCMinutes(), alarm.getUTCSeconds());
+// 			var alarm = new Date(itemJsonArray_2[0]);
+// 			var alarmTime = new Date(alarm.getUTCFullYear(), alarm.getUTCMonth(), alarm.getUTCDate(),  alarm.getUTCHours(), alarm.getUTCMinutes(), alarm.getUTCSeconds());
 			
-			var differenceInMs = alarmTime.getTime() - (new Date()).getTime();
+// 			var differenceInMs = alarmTime.getTime() - (new Date()).getTime();
 
-			if(differenceInMs < 0) {
-				alert('Specified time is already passed');
-				return;
-			}
+// 			if(differenceInMs < 0) {
+// 				alert('Specified time is already passed');
+// 				return;
+// 			}
 
-			alarmTimer = setTimeout(initAlarm, differenceInMs);
-			button.innerText = 'Cancel Alarm';
-			button.setAttribute('onclick', 'cancelAlarm(this);');
+// 			alarmTimer = setTimeout(initAlarm, differenceInMs);
+// 			button.innerText = 'Cancel Alarm';
+// 			button.setAttribute('onclick', 'cancelAlarm(this);');
 
-      location.reload();
-		};
+//       location.reload();
+// 		};
 
-		function cancelAlarm(button) {
-      document.getElementById('alarmicon').src ="";
-			clearTimeout(alarmTimer);
-			button.innerText = 'Set Alarm';
-			button.setAttribute('onclick', 'setAlarm(this);');
+// 		function cancelAlarm(button) {
+//       document.getElementById('alarmicon').src ="";
+// 			clearTimeout(alarmTimer);
+// 			button.innerText = 'Set Alarm';
+// 			button.setAttribute('onclick', 'setAlarm(this);');
 
-		};
+// 		};
 
-		function initAlarm() {
-			alarmSound.play();
-			document.getElementById('alarmOptions').style.display = '';
-      itemDeletedalarm(0);
-		};
+// 		function initAlarm() {
+// 			alarmSound.play();
+// 			document.getElementById('alarmOptions').style.display = '';
+//       itemDeletedalarm(0);
+// 		};
     
-    function itemDeletedalarm(itemIndex) {
-      itemJsonArrayStr_2 = localStorage.getItem("itemsJson2");
-      itemJsonArray_2 = JSON.parse(itemJsonArrayStr_2);
-      //Delete itemIndex element from the Array
-      itemJsonArray_2.splice(itemIndex, 1);
-      localStorage.setItem("itemsJson2", JSON.stringify(itemJsonArray_2));
+//     function itemDeletedalarm(itemIndex) {
+//       itemJsonArrayStr_2 = localStorage.getItem("itemsJson2");
+//       itemJsonArray_2 = JSON.parse(itemJsonArrayStr_2);
+//       //Delete itemIndex element from the Array
+//       itemJsonArray_2.splice(itemIndex, 1);
+//       localStorage.setItem("itemsJson2", JSON.stringify(itemJsonArray_2));
       
-    };
+//     };
 
-		function stopAlarm() {
-      document.getElementById('alarmicon').src ="";
-			alarmSound.pause();
-			alarmSound.currentTime = 0;
-			document.getElementById('alarmOptions').style.display = 'none';
-			cancelAlarm(document.getElementById('alarmButton'));
-		};
+// 		function stopAlarm() {
+//       document.getElementById('alarmicon').src ="";
+// 			alarmSound.pause();
+// 			alarmSound.currentTime = 0;
+// 			document.getElementById('alarmOptions').style.display = 'none';
+// 			cancelAlarm(document.getElementById('alarmButton'));
+// 		};
 
-		function snooze() {
-			stopAlarm();
-			alarmTimer = setTimeout(initAlarm, 300000); // 5 * 60 * 1000 = 5 Minutes
-		};
+// 		function snooze() {
+// 			stopAlarm();
+// 			alarmTimer = setTimeout(initAlarm, 300000); // 5 * 60 * 1000 = 5 Minutes
+// 		};
